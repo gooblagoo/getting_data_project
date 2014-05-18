@@ -25,8 +25,11 @@ df_test <- cbind(subject_test,y_test,x_test)
 df_train <- cbind(subject_train,y_train,x_train)
 
 df <- rbind(df_train,df_test)
-# use rename function to rename columns to look better 
-grep('mean|std',names(df),ignore.case = TRUE)
+
+
 d <- df[c(1,2,grep('mean|std',names(df),ignore.case = TRUE))]
 
 m <- merge(activities,d, all=TRUE)
+
+#change variable names
+gsub('\\(|\\)','',names(m))
